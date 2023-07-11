@@ -1,0 +1,421 @@
+1. Selenyumda geri, ileri ve yenileme eylemi nasıl yapılır?
+• driver.navigate().back()
+• driver.navigate().forward()
+• driver.navigate().refresh()
+
+2. Findelements'ın dönüş türü nedir?
+List of elements with similar property
+Benzer özelliklere sahip elemanların listesi
+
+3. Findelements için web elemanı bulunmazsa ne olur?
+Boş bir liste döndürür
+
+4. Findelement için web element bulunmazsa ne olur?
+It will give error as :NoSuchElementException şeklinde hata verecektir.
+
+5. Selenyumdaki açılır menüden değer nasıl seçilir?
+Using select class as below
+Select technology = new 
+Select(driver.findElement(By.xpath("//select[@id='effectTypes']")));
+technology.selectByVisibleText("Drop");
+
+6. Açılır menüden seçim yapmak için selenyumda sağlanan yöntemler nelerdir?
+• selectByVisibleText()
+• selectByValue()
+• selectByIndex()
+ 
+7. Selenyum'da kullanıcı arayüzünden metin nasıl alınır?
+• gettext()
+• getAttribute("propertyname")
+
+8. Geçerli url, başlık ve sayfa kaynağı nasıl alınır
+
+• driver.getCurrentUrl();
+• driver.getTitle();
+• driver.getPageSource();
+
+9. Selenyum kullanarak metin nasıl temizlenir?
+driver.findElement(By.xpath(“//input[@placeholder=’Username’]”)).clear();
+clear() — metin alanındaki metni temizlemek için kullanılan yöntem
+
+10. Tüm tarayıcı türleri için Tarayıcı Başlatma nasıl yapılır?
+• Firefox
+WebDriver driver = new FirefoxDriver();
+• Chrome
+WebDriver driver = new ChromeDriver();
+• Internet Explorer
+WebDriver driver = new InternetExplorerDriver();
+• Safari Driver
+WebDriver driver = new SafariDriver();
+
+
+11. Selenyum'da uyarılar ve açılır pencereler nasıl ele alınır?
+•• driver.switchTO().alert.accept() — to accept the alert box
+• driver.switchTO().alert.dismiss() — to cancel the alert box
+
+12. Selenyum'da uyarı açılır mesajı nasıl alınır?
+• driver.switchTO().alert.getText() — to retrieve the alert message
+
+13. How to send data to alert box in Selenium?
+• driver.switchTO().alert.sendKeys(“Text”) — to send data to the alert box
+•
+14. Selenyumda çerçeveler nasıl değiştirilir?
+• driver.switchTo.frame(int frameNumber) — mentioning the frame index number, the Driver will 
+switch to that specific frame
+• driver.switchTo.frame(string frameNameOrID) — mentioning the frame element or ID, the Driver 
+will switch to that specific frame
+• driver.switchTo.frame(WebElement frameElement) — mentioning the frame web element, the 
+Driver will switch to that specific frame
+
+•
+15. Çerçevelerde ana pencereye nasıl dönülür?
+• driver.switchTo().defaultContent() 
+
+16. Selenium'da birden çok pencere ve sekme nasıl işlenir?
+
+• getWindowHandle() — geçerli sayfanın tanıtıcısını almak için kullanılır (benzersiz bir tanımlayıcı)
+• getWindowHandles() — mevcut tüm sayfaların tutamaçlarını almak için kullanılır
+
+17. Pencereler ve sekmeler arasında nasıl geçiş yapılır?
+• driver.switchTo().window(“windowName/handle”) — bir pencereye geç
+
+18. Güncel tarayıcı penceresi nasıl kapatılır?
+• driver.close() — mevcut tarayıcı penceresini kapatır
+*. Hangi Kaynak kodu yönetim aracını kullandınız ve bana bazı temel komutları söyleyin
+kullanmış olduğun?
+
+19. Örtük bekleme nasıl ele alınır?
+Bir istisna atmadan önce belirli bir süre beklemek için kullanılır
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+20. Açık Bekleme Nasıl Yapılır?
+
+Kodu çalıştırmadan önce belirli bir koşulun oluşmasını beklemek için kullanılır.
+WebDriverWait wait = new WebDriverWait(driver,30);
+
+wait.until(ExpectedConditions.presenceOfElementLocated(By.name("login")));
+
+21. Selenyumdaki element doğrulama yöntemleri nelerdir?
+
+• isEnabled() — bir öğenin etkin olup olmadığını belirler, bir boolen döndürür.
+• isSelected() — bir öğenin seçilip seçilmediğini belirler, bir boolen döndürür.
+• isDisplayed() — bir öğenin gösterilip gösterilmeyeceğini belirler, bir boole döndürür.
+
+22. handle için selenyumda proxy nasıl işlenir?
+
+ChromeOptions options = new ChromeOptions();// Proxy sınıfı nesnesi oluştur - Yaklaşım 1
+Proxy proxy = new Proxy();
+proxy.setHttpProxy("username:password.myhttpproxy:3337");
+options.setCapability("proxy", proxy);
+ChromeDriver driver = new ChromeDriver(options);
+
+23. Selenyumda pencerenin boyutu nasıl ayarlanır?
+driver.manage().window().setSize(new Dimension(1024, 768));
+
+24. Selenium'da pencere boyutu nasıl getirilir?
+dimension size = driver.manage().window().getSize();
+int genişlik = size.getWidth();
+int yükseklik = size.getHeight();
+
+25. Selenyumdaki pencere nasıl büyütülür?
+driver.manage().window().maximize();
+
+26. Kaynaktan hedefe nasıl sürüklenip bırakılır?
+ WebElement source = driver.findElement(By.xpath("//div[@id='draggable']"));
+ WebElement destination = driver.findElement(By.xpath("//div[@id='droppable']"));
+ Actions builder = yeni Eylemler(sürücü);
+ builder.dragAndDrop(source, destination);
+ 
+27. Selenyumda klavye işlemleri nasıl yapılır?
+
+Robot robotu = yeni Robot();
+robo.keyPress(KeyEvent.VK_ENTER);
+
+28. Tüm tanımlama bilgileri ve tanımlama bilgisinin adı nasıl alınır?
+driver.manage().getCookies();
+driver.manage().getCookieNamed("APISID");
+
+29. Tüm çerezler ve çerez adı nasıl silinir?
+
+driver.manage().deleteCookieNamed("APISID");
+
+driver.manage().deleteAllCookies();
+
+30. Çerez nasıl eklenir?
+
+Cookie cookie1 = new Cookie("test2", "cookie2");
+driver.manage().addCookie(cookie1);
+
+31. TestNG kullanarak Selenium'da başarısız test senaryoları nasıl yeniden çalıştırılır?
+
+32. clear() yöntemi bir metin kutusunda çalışmıyorsa nasıl bir yaklaşım izlenmelidir?
+
+sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+
+33. Test senaryosu birden çok tarayıcı için paralel olarak nasıl çalıştırılır?
+
+<suite name="Automation Test Suite " parallel="tests" thread-count="2">
+ <test name="Automation Test CasesChrome">
+ <classes>
+ <class name="com.task.automation.testtwo.testone"/>
+ </classes>
+ </test>
+ <test name="Automation Test Casesfirefox">
+ <classes>
+ <class name="com.task.automation.testtwo.testfirefox"/>
+ </classes>
+ </test>
+</suite>
+
+34. Öğenin görünür olup olmadığını kontrol etmek için  Explicit wait t için ortak bir yöntem oluşturun veya
+olumsuzluk?
+
+public void waitForElementVisible(WebElement element, long timeout) {
+ try {
+ new WebDriverWait(driver, 
+timeout).until(ExpectedConditions.visibilityOf(element));
+ } catch (ElementNotVisibleException e) {
+ Reporter.log(element.toString() + "is not visible");
+ Reporter.log(e.getStackTrace().toString());
+ }
+ }
+
+35. Otomasyon test tahmini nasıl hazırlanır?
+
+36. Toplu iş dosyası Selenium WebDriver'dan nasıl başlatılır?
+
+İşlem toplu işlemi = Runtime.getRuntime.exec("toplu iş dosyasının yolu");
+Process batch = Runtime.getRuntime.exec("path of the batch file");
+
+37. Selenyum testi komut satırından nasıl çalıştırılır?
+
+Java -classpath ".;Selenium-server-standalone-2.33.0.jar" SampleClass
+
+38. Web sürücüsünün süper arayüzünün adı nedir?
+
+SearchContext.
+
+39. xpath kullanırken izlediğiniz stratejilerden bazılarını açıklayın.
+
+
+40. Testng test takımı komut satırından nasıl çalıştırılır?
+
+Cevap: Java -cp “C:\AutomationReinvented\testng
+
+\lib\*;C:\AutomationReinvented\testng\bin” org.testng.TestNG testng.xml
+
+
+41. Yumuşak ve sert iddialar arasındaki fark nedir?
+
+42. Selenium Webdriver aracılığıyla bir dosyayı nasıl yüklersiniz?
+
+"Dosya Seç" olarak bir butonumuz olsun, bu yüzden önce bu elemanı aşağıdaki gibi tanımlamamız gerekiyor.
+
+@FindBy(xpath="//span[contains(text(),'Activate')]")
+
+ public WebElement selectFile;
+
+Yüklemek istediğiniz dosya yolu ile gönderme anahtarlarını kullanın:
+
+selectFile.sendKeys("C:\\filetoupload")
+
+43. Selenium'un bir sınavdan geçmesi için karşılamanız gereken parametreler nelerdir?
+Ölçek?
+
+Selenium'un bir testi geçmesi için aşağıdaki gibi dört koşul (parametre) vardır:
+URL, ana bilgisayar, tarayıcı ve bağlantı noktası numarası.
+
+
+44. Çağrı sayımı/iş parçacığı sayımı veya herhangi bir ileri düzey üzerinde çalıştınız mı?
+TestNG ek açıklaması, Evet ise açıklayabilir misiniz?
+
+
+45. Selenium kullanarak otomatikleştiremeyeceğiniz iki şey söyler misiniz?
+
+
+46. ​​Projenizde kullanılan bazı anahtar kelimeleri açıklayın.
+BDD yaklaşımı?
+
+
+47. Bu komutu çalıştırırsanız ne olacak.
+As the given URL doesn’t contain http or https prefix so it will throw an exception.
+So, it is required to pass HTTP or HTTPS protocol within driver.get() method.
+driver.get(“https://www.google.com”);
+
+
+48. Selenium WebDriver'da Kurtarma Senaryosu Nedir?
+
+Kurtarma Senaryoları, Selenium WebDriver: içindeki “Try Catch” bloğu kullanılarak yapılır.
+try{
+
+driver.get(“https://www.google.com“);
+}
+catch (Exeption e){
+e.printStackTrace();
+
+}
+
+49. Hangi Kaynak kodu yönetim aracını kullandınız ve bana biraz söyleyin
+Kullandığınız temel komutlardan?
+
+
+50. Doğrulamak için veri almak için veritabanı tarafında çalıştınız mı?
+selenyum testleri, Evet ise, bana bazı temel sorguları söyleyebilir misiniz?
+günlük işlerde kullandın mı?
+
+
+71. Metnin Text is Bold  olup olmadığı veya selenyum kullanılıp kullanılmadığı nasıl kontrol edilir?
+
+Cevap: Selenium'da getCssValue() yöntemini kullanarak belirli özelliği alabiliriz ve
+metnin Kalın olup olmadığını kontrol edebilir.
+bold olup olmadığını kontrol etmeye çalıştığımız metnin "Otomasyon" olduğunu varsayalım.
+ 
+WebElement text = 
+driver.findElement(By.xpath("//*[contains(text(),'Automation')]"));
+ 
+ 
+ //Read font-weight property and print It In console.
+ String fontSize = text.getCssValue("font-weight");
+ System.out.println("Font color -> "+fontSize);
+
+72. staleElementException nedir, nedenleri ve çözümü nelerdir?
+
+BT?
+
+Cevap: Etkileşim olduğunuz öğe olduğunda bir StaleElementException atılır
+yok edildi ve sonra yeniden yaratıldı. Bugünlerde çoğu karmaşık web sayfası bir şeyleri hareket ettirecek
+kullanıcı onunla etkileşime girdiğinde anında ve bu, DOM'daki öğelerin
+yok edilmeli ve yeniden yaratılmalıdır.
+
+Bu olduğunda, daha önce sahip olduğunuz DOM'daki öğeye yapılan başvuru
+bayatlar ve artık bu referansı kullanıcıyla etkileşim kurmak için kullanamazsınız.
+DOM'daki öğeler. Bu olduğunda, referansınızı yenilemeniz gerekecek veya
+gerçek dünya terimlerinde öğeyi tekrar bulun.
+
+Eski öğe referans istisnası, bir WebDriver hatasıdır.
+aşağıdaki iki durum:
+
+1. Başvurulan web öğesi tamamen silindi.
+2. Öğe artık DOM'a bağlı değil
+
+Bunu çözmek için, navigasyon() veya try-catch bloğu ile sayfayı yenileyebiliriz.
+
+73. Selenyumdaki bir elementin css özellikleri nasıl alınır?
+
+Ans: driver.findElement(By.id(“id“)).getCssValue(“name of the css attribute”);
+
+
+74. Selenyum'un Kayıt dili nedir?
+Cevap: Selenyum kayıt dili HTML'dir
+
+
+75. Navigasyon() kullanmadan tarayıcı nasıl yenilenir?
+Cevap: sendKeys(Keys.F5) kullanma
+
+
+76. Selenium 4'teki yeni özellikler nelerdir? ÇOK IMP
+
+
+77. Selenium'da NoSuchElementException'ı çözmenin en iyi yolu nedir?
+Cevap:
+Öğenin bulunacağından asla emin olamazsınız, bu işlevsel testlerin amacıdır -
+sayfanızda herhangi bir değişiklik olup olmadığını size söylemek için. Ama kesinlikle yardımcı olan bir şey,
+add, genellikle NoSuchElementException benzerine neden olan öğeler için bekler
+
+78. Selenium'da sayfa yükleme stratejisi nedir?
+Cevap:
+
+
+79. Örtülü ve açık bekleme için varsayılan süre nedir?
+
+Örtük bekleme varsayılan süresi sıfırdır.
+Açık bekleme varsayılan süresi 500 ms'dir
+
+Selenyumda geri, ileri ve yenileme eylemi nasıl yapılır?
+
+• driver.navigate().back()
+• driver.navigate().forward()
+• driver.navigate().refresh()
+
+Findelements'ın dönüş türü nedir?
+
+
+Benzer özelliklere sahip elemanların listesi
+Findelements için web elemanı bulunmazsa ne olur?
+Boş bir liste döndürür
+Findelement için web element bulunmazsa ne olacak?
+:NoSuchElementException şeklinde hata verecektir.
+80. Projenizde kullanılan bazı anahtar kelimeleri açıklayın.
+
+
+BDD yaklaşımı?
+Cevap:
+
+81. TDD ve BDD nedir?
+
+Test Odaklı Geliştirme (TDD)
+
+TDD, başlı başına bir test türünden ziyade, yinelemeli bir geliştirme metodolojisidir.
+testler bir özelliğin tasarımını yönlendirir.
+
+Her döngü, özelliğin sonunda geçmesi gereken bir dizi birim testi oluşturarak başlar.
+(ilk kez yürütüldüklerinde başarısız olmaları gerekir).
+
+Bundan sonra, testleri geçmek için geliştirme yapılır. Testler yürütülür
+tekrar başka bir döngü başlatılır ve bu süreç tüm testler geçene kadar devam eder.
+
+Bu, kusurlar olduğu gerçeğine dayalı bir uygulamanın geliştirilmesini hızlandırmayı amaçlamaktadır.
+ne kadar erken bulunursa o kadar az maliyetlidir.
+Davranış odaklı geliştirme (BDD)
+
+BDD aynı zamanda yukarıdaki TDD'ye dayanan yinelemeli bir geliştirme metodolojisidir.
+amaç, bir uygulamanın geliştirilmesine tüm tarafları dahil etmektir.
+Her döngü (başarısız olması gereken) bazı özellikler oluşturarak başlar. Sonra oluştur
+başarısız birim testleri (ki bu da başarısız olmalıdır) ve ardından geliştirmeyi yapın.
+Bu döngü, her türlü test geçilene kadar tekrarlanır.
+Bunu yapmak için bir belirtim dili kullanılır. Herkes tarafından anlaşılır olmalı
+partiler ve basit, standart ve açık. Çoğu araç bu dil olarak Gherkin kullanır.
+Amaç, potansiyeli hedefleyerek TDD'den daha fazla hatayı tespit edebilmektir.
+kabul hatalarını da karşılar ve taraflar arasındaki iletişimi daha sorunsuz hale getirir.
+Spesifikasyonları yazmak ve bunlarla eşleştirmek için şu anda bir dizi araç mevcuttur.
+Salatalık veya SpecFlow gibi kod işlevleri.
+Revizyon
+
+36. Toplu iş dosyası Selenium WebDriver'dan nasıl başlatılır?
+
+İşlem toplu işlemi = Runtime.getRuntime.exec("toplu iş dosyasının yolu");
+
+37. Selenyum testi komut satırından nasıl çalıştırılır?
+Java -classpath ".;Selenium-server-standalone-2.33.0.jar" SampleClass
+
+38. Web sürücüsünün süper arayüzünün adı nedir?
+
+Cevap: SearchContext.
+40. Testng test takımı komut satırından nasıl çalıştırılır?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
